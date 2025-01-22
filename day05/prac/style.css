@@ -1,0 +1,57 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+/* Additional CSS styles will go here */
+@keyframes colorChange {
+  0% {
+    background-color: #f8f9fa;
+  }
+  50% {
+    background-color: #e9ecef;
+  }
+  100% {
+    background-color: #f8f9fa;
+  }
+}
+/* 캐러셀 */
+#carouselExample {
+  margin-bottom: 30px;
+}
+/* 세로 길이 고정 */
+.fixed-height {
+  height: 800px; /* 고정된 세로 길이 설정 */
+  object-fit: cover; /* 이미지 비율 유지하며 자르기 */
+  object-position: center; /* 이미지 중앙 정렬 */
+}
+.smooth-transition {
+  transition: transform 1s ease-in-out;
+}
+@media (max-width: 768px) {
+  .fixed-height {
+    height: 550px; /* 작은 화면에서는 높이를 더 작게 */
+  }
+}
+
+@media (max-width: 576px) {
+  .fixed-height {
+    height: 400px; /* 모바일 화면에서 높이를 더 줄임 */
+  }
+}
+
+.carousel-caption {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  flex-direction: column; /* 텍스트를 위아래로 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  background: rgba(0, 0, 0, 0.5); /* 반투명 배경 (선택 사항) */
+  color: #fff; /* 텍스트 색상 */
+}
+
+.jumbotron {
+  animation: colorChange 5s ease-in-out infinite;
+}
