@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remind Page</title>
+    <style>
+      /* 요소 선택자. 태그 이름을 선택 */
+      p {
+        /* cascading 되며 모든 p 태그의 색이 바뀐다 */
+        /* 인라인 스타일의 명시도로 인해 1번 문장은 브라운. */
+        color: #ebbebd;
+      }
+      .p1 {
+        /* hex코드 / 16진법 : R, G, B, 각각의 색상의 강도를 16진법의 숫자로 표현함함*/
+        color: #57687c;
+      }
+      #p2 {
+        color: rgb(236, 236, 236);
+        background-color: rgb(243, 168, 180);
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        /* 마진 순서는 상 우 좌 하 */
+        margin: 20px 20px 10px 10px;
+        border: 2px solid #f6416c;
+      }
+      #box-sizing {
+        box-sizing: border-box;
+      }
+      #content-sizing {
+        box-sizing: content-box;
+      }
+      .float {
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 여기서의 html 속성 attribute ex) <p style> -->
+    <p style="color: #2c3e50">세계 최고의 개발자가 되자~</p>
+    <!-- 인라인 스타일은 여러 개를 선택하는데 불편하다 -> stylesheet를 사용하자자 -->
+    <!-- head 안의 스타일을 작성하자~ -> 내부 스타일 -->
+    <div>
+      <p>p 태그 입니동동</p>
+      <!-- 선택자를 활용하여 작성한다. 대표적 요소, 클래스, ID 선택자 -->
+      <p class="p1">p 태그와 클래스 입니동동</p>
+      <p id="p2">p 태그와 아이디 입니동동동</p>
+    </div>
+    <!-- 박스 모델에서는 1. 마진 병합 2. 박스 사이징, 콘텐트 사이징을 기억하자 -->
+    <!-- div>div.box#box-sizing+div.box#content-sizing -->
+    <div>
+      <div class="box" id="box-sizing"></div>
+      <div class="box" id="content-sizing"></div>
+    </div>
+    <!-- float 적용 실습습 -->
+    <div>
+      <!-- block 요소들 끼리의 float 로직 -->
+      <!-- 한 줄을 다 차지하는 block 요소는 바닥에 깔린다 -->
+      <div class="box float" id="box-sizing"></div>
+      <div class="box float" id="content-sizing"></div>
+      <!-- 긴 문장을 치고 싶으면 lorem-->
+      <!-- lorem*20 -->
+      <!-- inline, 텍스트 -> 감싸기가 된다 float -->
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum tenetur
+      earum enim expedita, totam ipsum eos! Velit quae nemo aliquid voluptas
+      quam natus dicta, exercitationem voluptatum vero, enim incidunt ratione.
+      Maxime alias eius illum dignissimos repellendus molestias fugiat delectus
+      doloribus, necessitatibus tempore veniam ad deserunt iure quis, porro
+      exercitationem amet vitae ipsam nostrum facere. Voluptatum doloribus fugit
+      nisi architecto necessitatibus? Itaque illo est libero dolor sunt. Enim
+      quod et, mollitia laborum distinctio laudantium fugiat quidem ducimus
+      nobis asperiores dicta itaque illo, nisi error, repellendus eius
+      cupiditate in commodi eum dolore? Impedit, saepe, quibusdam nesciunt porro
+      repellendus atque et optio excepturi quasi voluptatum ea cum dolores
+      debitis laudantium nostrum, vero vitae commodi. Quasi similique odit
+      suscipit cum facilis commodi id perferendis!
+      <div class="box float" id="box-sizing"></div>
+      <!-- float은 물든다 따라서 clear:both를 사용하자자 -->
+      <div style="clear: both" class="box float" id="content-sizing"></div>
+    </div>
+  </body>
+</html>

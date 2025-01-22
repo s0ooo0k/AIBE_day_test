@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex(Flexbox)</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap");
+      .noto-sans-kr-basoc {
+        font-family: "Noto Sans KR", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+      p {
+        font-family: "Noto Sans KR", serif;
+      }
+      img {
+        width: 400px;
+      }
+
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+      }
+      .flex-item {
+        /* 이건 flex 기능이 아니라 시각적 단순 표현임  */
+        background-color: #c8aaaa;
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+      }
+      .row {
+        flex-direction: row;
+      }
+      .column {
+        flex-direction: column;
+      }
+      .row.reverse {
+        flex-direction: row-reverse;
+      }
+      .column.reverse {
+        flex-direction: column-reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- flex : allign -->
+    <!-- text-align : 가운데 정렬 -->
+    <div>
+      <!-- 가운데 정렬 방법 1 -->
+      <p style="margin: 0 40px; text-align: center">
+        피카츄 라이츄 파이리 꼬부기 버터플 야도란 피죤투 또가스 서로 생긴 모습은
+        달라도 우리는 모두 친구 (맞아) 산에서 들에서 때리고 뒹굴고 사막에서
+        정글에서 울다가 웃다가 서로 만나기까지 힘들었어도 우리는 모두 친구
+        (피카피카) 울랄랄라 내가 원하는 건 너도 원하고 마주 잡은 두 손에 맹세해
+        힘을 내봐 그래 힘을 내봐 용기를 내봐 그래 용기를 내봐 피카피카피카츄
+        피카피카피카츄 아름다운 우리 추억 기억해 피카피카피카츄 피카피카피카츄
+        너와 나 꿈을 위해 피카피카피카츄 피카피카피카츄 따뜻한 햇살 밝은 세상
+        피카피카피카츄 피카피카피카츄 우리 모두 꿈을 위해 피카츄 라이츄 파이리
+        꼬부기 잠만보 리자몽 질퍽이 탕구리 서로 가진 생각은 달라도 우리는 모두
+        친구 (맞아) 재밌는 얘기도 신나는 놀이도 짜증나고 싫증나고 울고 싶을 때도
+        서로 나누어주고 위로해주는 우리는 모두 친구 (피카피카) 울랄랄라 내가
+        원하는 걸 너도 원하고 마주 잡은 두 손에 맹세해 힘을 내봐 그래 힘을내봐
+        용기를 내봐 그래 용기를 내봐 피카피카피카츄 피카피카피카츄 서로 위한
+        예쁜 마음 기억해 피카피카피카츄 피카피카피카츄 너와 나 꿈을 위해
+        피카피카피카츄 피카피카피카츄 신나는 여행 멋진 친구들 피카피카피카츄
+        피카피카피카츄 우리 모두 꿈을 위해 피카츄!
+      </p>
+      <!-- 이미지는 텍스트와 같은 취급을 받는다. -->
+      <div style="text-align: center">
+        <img src="./poke.png" alt="잠만보" />
+      </div>
+      <div>
+        <!-- inline이 마진이 안먹어서 display를 block으로 바꿔주고 마진을 줌 => 가운데 정렬 -->
+        <!-- 가운데 정렬 방법 2 -->
+        <img
+          style="display: block; margin: 0 auto; border: 3px solid blue"
+          src="./poke.png"
+          alt="잠만보"
+        />
+      </div>
+    </div>
+    <br />
+
+    <!-- div인데 세로줄이 아니라 가로로 나열된다! -->
+    <!-- 화면에 따라 반응한다 -->
+    <!-- 행 row 열 colum -->
+    <!-- 기본 flex-direction이 row다다 -->
+    <div class="flex-container">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+    <div class="flex-container row">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+    <div class="flex-container row reverse">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+    <div class="flex-container column">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+    <div class="flex-container column reverse">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+
+    <div class="flex-container" 
+    style="height: 500px; justify-content: center;
+    align-items: center; flex-wrap: wrap; gap: 2px;" >
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+  </body>
+
+  <div style="display: flex;
+  height: 200px;
+  background-color: #bb90d4;
+  align-items: center;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  ">
+  <!-- wrap-reverse는 길이가 넘어가면 뒤에걸 앞으로 넘김김 -->
+    <div style="background-color: bisque;">
+        바보새우용가리
+    </div>
+    <div style="background-color: #e4d1d1;">안녕하세용가리리</div>
+   </div>
+</html>

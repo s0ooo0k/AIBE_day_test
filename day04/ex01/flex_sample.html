@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Layout</title>
+    <style>
+      /* 공통 스타일 */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        display: flex; /* Flexbox 활성화 */
+        flex-wrap: wrap; /* 아이템 줄바꿈 허용 */
+        justify-content: space-between; /* 각 아이템 사이를 균등하게 배치 */
+        align-items: center; /* 세로 방향 중앙 정렬 */
+        padding: 20px; /* 컨테이너 내부 여백 */
+        background-color: #f4f4f4;
+        border: 2px solid #333;
+        height: 300px; /* 컨테이너 높이 */
+      }
+
+      .box {
+        width: 100px; /* 박스 너비 */
+        height: 100px; /* 박스 높이 */
+        background-color: lightblue;
+        border: 2px solid blue;
+        margin: 10px; /* 박스 간 여백 */
+        padding: 10px; /* 내부 여백 */
+        text-align: center;
+        line-height: 80px; /* 텍스트 수직 중앙 정렬 */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box">Box 1</div>
+      <div class="box">Box 2</div>
+      <div class="box">Box 3</div>
+      <div class="box">Box 4</div>
+    </div>
+  </body>
+</html>

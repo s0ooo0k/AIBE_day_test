@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex01</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(206, 206, 206);
+        border: 10px solid rgb(94, 71, 136);
+        margin: 50px;
+      }
+      #static {
+        position: static;
+        /* left, right, bottom, top */
+        top: 10px;
+      }
+      #relative {
+        position: relative;
+        /* 내 원래 위치를 기준으로 움직임 */
+        /* right로 주면 왼쪽으로 움직이겠지 */
+        top: 10px;
+        right: 10px;
+        background-color: pink;
+      }
+      .relative {
+        position: relative;
+        background-color: pink;
+      }
+      /* absolute는 스태틱을 상위 요소로 생각하지 않는다 */
+      .absolute {
+        position: absolute;
+        top: 50px;
+        /* 왼쪽으로부터 20px */
+        left: 50px;
+        border-color: rgb(104, 139, 206);
+        background-color: rgb(226, 226, 226);
+      }
+      .fixed {
+        position: fixed;
+        top: 30px;
+        left: 20px;
+        background-color: white;
+        border-color: black;
+      }
+      .sticky {
+        position: sticky;
+        top: 60px;
+        left: 130px;
+        background-color: #ffe0e0;
+        border-color: #98bfeb;
+        /* z-index 높이값값 */
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sticky">스티키</div>
+    <!-- position을 통해서 위치를 배치할 수 있음음 -->
+    <!-- static은 기본, static을 포함하는 상위형식이 static인지만 확인하면 됨됨 -->
+    <div id="static">스태틱 (static)</div>
+    <!-- 나를 기준으로 움직이되, 상대방에게 새로운 기준이 되어준다 -->
+    <div id="relative">릴레이티브 (relative)</div>
+    <div class="relative">
+      <div>스태틱</div>
+      <div class="relative">릴레</div>
+      <div class="absolute">앱솔루트</div>
+    </div>
+    <div class="absolute">앱솔루트</div>
+    <div class="fixed">픽스드</div>
+  </body>
+</html>

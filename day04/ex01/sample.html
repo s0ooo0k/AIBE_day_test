@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position Layout</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        line-height: 60px;
+        z-index: 10;
+      }
+
+      .container {
+        display: flex;
+        margin-top: 60px; /* To offset the fixed header */
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 60px; /* Sticks below the header */
+        width: 200px;
+        height: calc(100vh - 60px);
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      .content {
+        position: relative;
+        flex: 1;
+        padding: 20px;
+        background-color: #fff;
+      }
+
+      .footer {
+        position: relative;
+        height: 50px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+      }
+    </style>
+    >
+  </head>
+  <body>
+    <header class="header">Header</header>
+    <div class="container">
+      <aside class="sidebar">Sidebar</aside>
+      <main class="content">Main Content</main>
+    </div>
+    <footer class="footer">Footer</footer>
+  </body>
+</html>
