@@ -1,0 +1,87 @@
+.noto-sans-kr-basoc {
+  font-family: "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.black-han-sans-regular {
+  font-family: "Black Han Sans", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --primary-color: #f0f0d7;
+  --secondary-color: #aab99a;
+}
+body {
+  font-family: "Noto Sans KR", serif;
+  background-color: var(--primary-color);
+  margin: 0;
+  padding: 0;
+}
+.selection-box {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.selection-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.modal-header {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.carousel-item img {
+  object-fit: cover;
+  height: 300px;
+}
+.title {
+  font-family: "Black Han Sans", serif;
+}
+.btn,
+.btn-primary {
+  background-color: #aac78f;
+  border-color: white;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.vote-img {
+  background-color: white;
+}
+.img-set {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  /* 비율 유지 */
+  height: auto;
+}
+
+.card-img-top {
+  /* image의 고정 높이 */
+  height: 300px;
+  /* 이미지 전체를 보여주되, 다 못채울 수도 있음 */
+  object-fit: contain;
+  /* 반응형 */
+  width: 100%;
+  padding: 10px;
+}
+
+.card-body {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn-mod {
+  display: flex;
+  justify-content: center;
+}

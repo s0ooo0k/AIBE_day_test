@@ -1,0 +1,60 @@
+.jua-regular {
+  font-family: "Jua", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.noto-sans-kr-basoc {
+  font-family: "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.black-han-sans-regular {
+  font-family: "Black Han Sans", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+div {
+  text-align: center;
+  font-family: "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+}
+
+.title {
+  font-family: "Black Han Sans", serif;
+  font-size: 60px;
+  font-weight: 400;
+}
+
+* {
+  text-align: center;
+}
+
+h2 {
+  font-family: "Jua", serif;
+  font-weight: 100;
+}
+
+body {
+  background-color: rgb(206, 209, 219);
+  text-align: center;
+  font-family: "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+}
+
+.content-box {
+  width: 50%;
+  border: 2px solid rgb(61, 57, 57);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-tag {
+  width: 50%;
+  margin: auto;
+}

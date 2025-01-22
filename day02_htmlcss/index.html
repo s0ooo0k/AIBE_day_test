@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 페이지</title>
+  </head>
+  <body>
+    기본적으로 엔터가 무시 <br />
+    <p id="cat" class="question" style="color: red">
+      여러 분은 cat person입니까?
+    </p>
+    <p id="dog" class="question">dog person입니까?</p>
+    <!-- crtl + / 를 누르면 주석이 생겨요 -->
+    <h1>헤드라인</h1>
+    <h6>가장 작은 것</h6>
+    <span>인라인1</span>
+    <span>인라인2</span>
+    <strong>왜 strong은 살아남았을까?</strong>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ol>
+      <li>밥</li>
+      <li>계란말이</li>
+      <li>김치찌개</li>
+      <li>참치</li>
+    </ol>
+
+    <a href="out.html">out.html</a><br />
+    <a href="/day02_htmlcss/out.html">out.html</a>
+    <a href="https://programmers.co.kr/">프로그래머스</a>
+    <a href="https://example.com"></a>
+    <a href="http://naver.com"></a>
+    <p>안녕하세요</p>
+
+    <img width="500" src="cat.jpg" alt="하치와레" />
+    <img
+      width="500"
+      src="https://mblogthumb-phinf.pstatic.net/MjAyMTA4MjlfNTgg/MDAxNjMwMjQ3MzgxMTAy.injoGn7wQs2uwYOqdq7Ab8b0b6XfPxDegnO1WMVX1-sg.I9_zxxQ2x1Mk3LVhEZuHfEnpI7KMA4vuRQNuPTEcrP0g.JPEG.weird_/ErNq16lVkAEpQjs.jfif.jpg?type=w800"
+      alt="하치와레냥냥"
+    />
+
+    <table>
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>직업</th>
+      </tr>
+      <tr>
+        <td>지현숙</td>
+        <td>25</td>
+        <td>개발자</td>
+      </tr>
+      <!-- tr>td*3^tr>td*3 -->
+      <!-- (tr>td*3)*2 -->
+      <tr>
+        <td>박자바</td>
+        <td>24</td>
+        <td>개발자</td>
+      </tr>
+      <tr>
+        <td>황자바</td>
+        <td>23</td>
+        <td>개발자</td>
+      </tr>
+    </table>
+
+    <form action="" method="get">
+      <input type="text" name="result" />
+    </form>
+    <form
+      action="https://search.naver.com/search.naver?where=nexearch&query=%EC%9E%90%EB%B0%94"
+      method="get"
+    >
+      <label for="query">검색어</label>
+      <input
+        id="query"
+        type="text"
+        name="query"
+        placeholder="검색어를 입력하세요"
+      />
+      <input type="hidden" name="where" value="news" />
+    </form>
+  </body>
+</html>

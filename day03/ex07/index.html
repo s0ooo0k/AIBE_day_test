@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07 Page</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap");
+      /* div를 하는 이유 : 초기값, 공통된 값 설정 */
+      div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid brown;
+        padding: 10px;
+        /* 이렇게 하면 실제 크기가 102가 아니라 120.. 등으로 나온다!
+        패딩과 보더가 포함되기 때문이다! */
+      }
+      #box1 {
+        /* default -> border랑 패딩은 포함하지 않는다다*/
+        box-sizing: content-box;
+        font-family: "Black Han Sans", serif;
+      }
+      #box2 {
+        box-sizing: border-box;
+        font-family: "Black Han Sans", serif;
+      }
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap");
+    </style>
+    <link rel="stylesheet" href="../main_style.css" />
+  </head>
+  <body>
+    <!-- div#box1+div#box2 -->
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+  </body>
+</html>

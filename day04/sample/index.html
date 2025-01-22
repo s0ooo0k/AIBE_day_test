@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiniPokemon</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap");
+    </style>
+
+    <meta property="og:title" content="당신의 포켓몬을 골라보세요~💕" />
+    <meta
+      property="og:description"
+      content="닌텐도의 저작권은 무섭습니다!!!!"
+    />
+    <meta
+      property="og:image"
+      content="https://i.postimg.cc/v8VmCjCn/ohdoctor.png?v=0"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="../favicon_mon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="../favicon_mon/favicon.svg" />
+    <link rel="shortcut icon" href="../favicon_mon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicon_mon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="../favicon_mon/site.webmanifest" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1 class="text-center mb-4 title">당신의 포켓몬을 골라보세요~💕</h1>
+
+      <!-- Card Section -->
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="card" style="width: 18rem">
+            <img
+              src="../image/drrr.png"
+              class="card-img-top vote-image"
+              alt="Option 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">잠만보</h5>
+              <p class="card-text">
+                잠만보는 잠을 좋아합니다. 당신보다 잠을 좋아할지도?<br />
+                그치만 왕크니까 왕귀엽다.
+              </p>
+              <a
+                href="#"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#voteModal"
+                >⚡들어와! 넌 내꺼야!</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="card" style="width: 18rem">
+            <img
+              src="../image/turtle.png"
+              class="card-img-top vote-image"
+              alt="Option 2"
+            />
+            <div class="card-body">
+              <h5 class="card-title">꼬부기</h5>
+              <p class="card-text">
+                꼬부기는 물을 죠아합니당~ 또 무슨 특징이 있을까요.. 음 귀엽다?
+              </p>
+              <a
+                href="#"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#voteModal"
+                >⚡들어와! 넌 내꺼야!</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="card" style="width: 18rem">
+            <img
+              src="../image/eve.png"
+              class="card-img-top vote-image"
+              alt="Option 3"
+            />
+            <div class="card-body">
+              <h5 class="card-title">이브이</h5>
+              <p class="card-text">
+                와! 이브이 아십니까? 이브이의 진화는 매우 많습니다.
+                쥬피썬더..샤미드...
+              </p>
+              <a
+                href="#"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#voteModal"
+                >⚡들어와! 넌 내꺼야!</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="card" style="width: 18rem">
+            <img
+              src="../image/seed.png"
+              class="card-img-top vote-image"
+              alt="Option 4"
+            />
+            <div class="card-body">
+              <h5 class="card-title">이상해씨</h5>
+              <p class="card-text">이상해씨가 진화하면 엄청납니다!</p>
+              <a
+                href="#"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#voteModal"
+                >⚡들어와! 넌 내꺼야!</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="card" style="width: 18rem">
+            <img
+              src="../image/meta.png"
+              class="card-img-top vote-image"
+              alt="Option 5"
+            />
+            <div class="card-body">
+              <h5 class="card-title">메타몽</h5>
+              <p class="card-text">
+                메타몽은 무엇이든 변신할 수 있습니다! 어느새 당신이 두명일지도?
+              </p>
+              <a
+                href="#"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#voteModal"
+                >⚡들어와! 넌 내꺼야!</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <div class="card" style="width: 18rem">
+            <img
+              src="../image/pika.png"
+              class="card-img-top vote-image"
+              alt="Option 6"
+            />
+            <div class="card-body">
+              <h5 class="card-title">피카츄</h5>
+              <p class="card-text">돌아가~ 피카츄의 주인은 지우야~</p>
+              <a
+                href="#"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#voteModal"
+                >⚡들어와! 넌 내꺼야!</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Section -->
+      <div
+        id="optionCarousel"
+        class="carousel slide my-5"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../image/ba1.jpg" class="d-block w-100" alt="Option 1" />
+          </div>
+          <div class="carousel-item">
+            <img src="../image/ba3.jpg" class="d-block w-100" alt="Option 2" />
+          </div>
+          <div class="carousel-item">
+            <img src="../image/baw.jpg" class="d-block w-100" alt="Option 3" />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#optionCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#optionCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- Modal Section -->
+      <div
+        class="modal fade"
+        id="voteModal"
+        tabindex="-1"
+        aria-labelledby="voteModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="voteModalLabel" style="color: black">
+                정말입니까?
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              이 포켓몬으로 결정하시겠습니까? ✨ <br />포켓몬은 평생 당신만 보며
+              살아갑니다. . <br />
+              <br />
+              <div class="btn-mod">
+                <a href="./celebration.html" class="btn btn-primary">네네!!</a>
+                <a href="./cancel.html" class="btn btn-primary">아뇨..</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Favicon will be linked here -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

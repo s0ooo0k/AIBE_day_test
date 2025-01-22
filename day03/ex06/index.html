@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06 Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        background-color: rgb(216, 216, 216);
+        color: black;
+        text-align: center;
+        /* content */
+        width: 200px;
+        height: 200px;
+        /* padding 내부의 영역 */
+        padding: 20px;
+        /* border 경계 */
+        border: 5px solid rgb(78, 52, 52);
+        /* margin 외부의 영역 */
+        /* 마진은 병합이 일어난다. 잘하는 사람들은 div를 만들어서 padding을 줌 */
+        /* 마진은 상대적으로 큰 쪽이 살아남음 */
+        margin: 20px;
+      }
+      #box1 {
+        margin-bottom: 40px;
+      }
+      #box2 {
+        margin-top: 60px;
+      }
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap");
+    </style>
+
+    <link rel="stylesheet" href="../main_style.css" />
+  </head>
+  <body>
+    <!-- div.box -->
+    <div id="box1" class="box">First box</div>
+    <div id="box2" class="box">Second box</div>
+    <div class="box">Third box</div>
+  </body>
+</html>

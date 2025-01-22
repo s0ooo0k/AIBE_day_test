@@ -1,0 +1,13 @@
+li {
+  color: pink;
+  font-size: 15px;
+}
+
+ol li {
+  color: violet;
+}
+
+ol li {
+  /* crtl, cmd + / : 주석 */
+  color: blue;
+}
