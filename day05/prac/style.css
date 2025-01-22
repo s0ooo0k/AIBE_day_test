@@ -13,9 +13,44 @@ body {
     background-color: #f8f9fa;
   }
 }
+
+/* 폰트 */
+.noto-sans-kr-basic {
+  font-family: "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.roboto-basic {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.archivo-narrow-basic {
+  font-family: "Archivo Narrow", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.kor {
+  font-family: "Noto Sans KR", serif;
+}
+.head-title {
+  font-family: "Archivo Narrow", serif;
+}
+
+/* 기본설정 */
+.body {
+  background-color: rgb(223, 221, 220);
+}
 /* 캐러셀 */
 #carouselExample {
   margin-bottom: 30px;
+}
+.carousel-inner {
+  background-color: black;
 }
 /* 세로 길이 고정 */
 .fixed-height {
@@ -23,19 +58,9 @@ body {
   object-fit: cover; /* 이미지 비율 유지하며 자르기 */
   object-position: center; /* 이미지 중앙 정렬 */
 }
+
 .smooth-transition {
   transition: transform 1s ease-in-out;
-}
-@media (max-width: 768px) {
-  .fixed-height {
-    height: 550px; /* 작은 화면에서는 높이를 더 작게 */
-  }
-}
-
-@media (max-width: 576px) {
-  .fixed-height {
-    height: 400px; /* 모바일 화면에서 높이를 더 줄임 */
-  }
 }
 
 .carousel-caption {
@@ -44,6 +69,7 @@ body {
   left: 0;
   right: 0;
   display: flex;
+  font-family: "Roboto", serif;
   justify-content: center; /* 수평 중앙 정렬 */
   align-items: center; /* 수직 중앙 정렬 */
   flex-direction: column; /* 텍스트를 위아래로 정렬 */
@@ -52,6 +78,129 @@ body {
   color: #fff; /* 텍스트 색상 */
 }
 
+.car-btn {
+  height: 40px;
+}
+
+/*album page*/
+.container {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+.fixed-height-album {
+  height: 400px; /* 고정된 세로 길이 설정 */
+  opacity: 0.7;
+  object-fit: cover; /* 이미지 비율 유지하며 자르기 */
+  object-position: center; /* 이미지 중앙 정렬 */
+}
+
+.title {
+  text-align: center;
+  margin: 10px;
+}
+.fixed-height-img {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+/* main 1 content */
+/* 카드 레이아웃 설정 */
+.fixed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 가로 4개 */
+  grid-template-rows: repeat(2, auto); /* 세로 2개 */
+  gap: 20px; /* 카드 간격 */
+}
+
+/* 카드 스타일 */
+.song-card {
+  height: 300px; /* 카드 높이 고정 */
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  position: relative; /* 자식 요소 기준 위치 */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.song-card img {
+  height: 200px; /* 이미지 높이 고정 */
+  object-fit: cover; /* 이미지 비율 유지하며 잘림 */
+}
+
+.song-card-body {
+  height: 100px; /* 텍스트 부분 높이 고정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative; /* 자식 요소 기준 */
+  z-index: 1; /* 기본 텍스트가 위로 오게 */
+  transition: opacity 0.3s ease; /* 부드럽게 사라짐 */
+}
+
+/* 숨겨진 텍스트 */
+.hidden-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  opacity: 0; /* 기본적으로 숨김 */
+  z-index: 2; /* 숨겨진 텍스트가 위로 오게 설정 */
+  transition: opacity 0.3s ease; /* 부드럽게 나타남 */
+}
+
+/* 호버 효과 */
+.song-card:hover {
+  background-color: #000000; /* 배경색 변경 */
+  opacity: 0.7;
+  transform: scale(1.05); /* 카드 확대 */
+}
+
+/* 기본 텍스트 숨김 & 숨겨진 텍스트 표시 */
+.song-card:hover .song-card-body {
+  opacity: 0.2; /* 기본 텍스트 숨김 */
+}
+.song-card:hover .card-img-top {
+  opacity: 0.2; /* 기본 텍스트 숨김 */
+}
+
+.hidden-text {
+  color: white;
+}
+.song-card:hover .hidden-text {
+  opacity: 1; /* 숨겨진 텍스트 표시 */
+}
+
+.footer {
+  background-color: #000; /* 검정색 배경 */
+  height: 50px;
+  color: #fff; /* 흰색 텍스트 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  padding: 20px 0; /* 위아래 여백 */
+  font-size: 0.9rem; /* 텍스트 크기 */
+}
+
 .jumbotron {
   animation: colorChange 5s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .fixed-height {
+    height: 550px; /* 작은 화면에서는 높이를 더 작게 */
+  }
+  .fixed-grid {
+    grid-template-columns: repeat(2, 1fr); /* 가로 2개 */
+    grid-template-rows: auto; /* 행 자동 */
+  }
+}
+
+@media (max-width: 576px) {
+  .fixed-height {
+    height: 400px; /* 모바일 화면에서 높이를 더 줄임 */
+  }
+  .fixed-grid {
+    grid-template-columns: 1fr; /* 가로 1개 */
+    grid-template-rows: auto; /* 행 자동 */
+  }
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music Portfolio</title>
+    <title>Music Archive</title>
     <!-- Bootstrap CDN -->
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -29,39 +29,37 @@
     <meta property="og:description" content="제가 고른 음악을 소개합니다다" />
     <meta
       property="og:image"
-      content=""
-
+      content="https://raw.githubusercontent.com/s0ooo0k/AIBE_day_test/refs/heads/main/day05/prac/img/bg-img/bg-1.jpg"
     />
     <!-- Web Fonts -->
-     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-</style>
-     </style>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <!-- 헤더 및 navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Music Recommended</a>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark"
+      style="background-color: rgb(10, 10, 10)"
+    >
+      <a class="navbar-brand head-title" href="./index.html">Music Archive </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="./index.html"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Album</a>
+            <a class="nav-link" href="./album_1.html">Album</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Events</a>
+            <a class="nav-link" href="./album_2.html">Song</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">News</a>
+            <a class="nav-link" href="./album_3.html">Singer</a>
           </li>
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
@@ -71,10 +69,7 @@
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-              >
+              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
                 Search
               </button>
             </form>
@@ -90,150 +85,197 @@
       data-bs-ride="carousel"
       data-bs-interval="3000"
       data-bs-pause="false"
-      data-bs-wrap="true">
-        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false">
-          <div class="carousel-inner">
-            <!-- Slide 1 -->
-            <div class="carousel-item active smooth-transition">
-              <img src="./img/bg-img/bg-1.jpg" class="d-block w-100 fixed-height" alt="Slide 1">
-              <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
-                <h5>이 달의 앨범</h5>
-                <h3>Beenzino - NOWIZKI</h3>
-              </div>
-            </div>
-            <!-- Slide 2 -->
-            <div class="carousel-item smooth-transition">
-              <img src="./img/bg-img/bg-2.jpg" class="d-block w-100 fixed-height" alt="Slide 2">
-              <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
-                <h5>이 달의 앨범</h5>
-                <h3>Beenzino - NOWIZKI</h3>
-              </div>
-            </div>
-            <!-- Slide 3 -->
-            <div class="carousel-item smooth-transition">
-              <img src="./img/bg-img/bg-3.jpg" class="d-block w-100 fixed-height" alt="Slide 3">
-              <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
-                <h5>이 달의 앨범</h5>
-                <h3>Beenzino - NOWIZKI</h3>
-              </div>
-            </div>
+      data-bs-wrap="true"
+    >
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active smooth-transition"">
+          <img
+            src="./img/bg-img/bg-1.jpg"
+            class="d-block w-100 fixed-height"
+            alt="Slide 1"
+          />
+          <div
+            class="carousel-caption d-flex flex-column justify-content-center align-items-center"
+          >
+            <h5 class="kor">이 달의 앨범</h5>
+            <h3>Beenzino - NOWITZKI</h3>
+            <br />
+            <button
+              onclick="location.href = './album_1.html'"
+              class="btn btn-light my-2 my-sm-0 car-btn"
+              type="button"
+            >
+              READ
+            </button>
           </div>
         </div>
-
-    <!-- Main Content -->
-    <div class="container">
-      <!-- Artist Cards Placeholder -->
-      <div class="row">
-        <div class="col-md-4">
-          <a href="#" class="card-link">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Beenzino</h5>
-                <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                  class="card-img-top"
-                  alt="Beenzino"
-                />
-                <p class="card-text">
-                  Lim Sung-bin, most famously known as Beenzino, is a South
-                  Korean rapper. His stage name is a play on that of Boston
-                  rapper Benzino, combined with "빈" from his birth name.
-                </p>
-              </div>
-            </div>
-          </a>
+        <!-- Slide 2 -->
+        <div class="carousel-item smooth-transition">
+          <img
+            src="./img/bg-img/bg-2.jpg"
+            class="d-block w-100 fixed-height"
+            alt="Slide 2"
+          />
+          <div
+            class="carousel-caption d-flex flex-column justify-content-center align-items-center"
+          >
+            <h5 class="kor">이 달의 곡</h5>
+            <h3>d4vd - Here With Me</h3>
+            <button
+              onclick="location.href = './album_2.html'"
+              class="btn btn-light my-2 my-sm-0 car-btn"
+              type="button"
+            >
+              READ
+            </button>
+          </div>
         </div>
-        <div class="col-md-4">
-          <a href="#" class="card-link">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Big Naughty</h5>
-                <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                  class="card-img-top"
-                  alt="Big Naughty"
-                />
-                <p class="card-text">
-                  BIG Naughty is a South Korean rapper and songwriter. In 2019,
-                  he gained recognition after appearing on the hip-hop
-                  competition show Show Me the Money 8.
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a href="#" class="card-link">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Iann Dior</h5>
-                <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                  class="card-img-top"
-                  alt="Iann Dior"
-                />
-                <p class="card-text">
-                  Michael Ian Olmo, known professionally as Iann Dior, is an
-                  American rapper, singer, and songwriter. Olmo is most notably
-                  known for his 2020 hit single "Mood" in collaboration with
-                  24kGoldn, which peaked at number one on the Billboard Hot 100.
-                </p>
-              </div>
-            </div>
-          </a>
+        <!-- Slide 3 -->
+        <div class="carousel-item smooth-transition">
+          <img
+            src="./img/bg-img/bg-3.jpg"
+            class="d-block w-100 fixed-height"
+            alt="Slide 3"
+          />
+          <div
+            class="carousel-caption d-flex flex-column justify-content-center align-items-center"
+          >
+            <h5 class="kor">이 달의 가수</h5>
+            <h3>iann dior - emotions</h3>
+            <button
+              onclick="location.href = './album_3.html'"
+              class="btn btn-light my-2 my-sm-0 car-btn"
+              type="button"
+            >
+              READ
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Carousel Placeholder -->
-      <h2 class="mt-4">Recommended Songs</h2>
-      <div
-        id="recommendedSongsCarousel"
-        class="carousel slide"
-        data-ride="carousel"
-        data-interval="3000"
-      >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+      <!-- Main Content1 -->
+      <div class="container my-5">
+        <h2 class="text-center mb-4">Repeat All Day</h2>
+        <p class="text-center kor cotent-para">
+          제 플레이리스트에서 사라지지 않는 앨범들을 소개합니다 <br />
+          질리지 않고 오래 꺼내 들을 수 있는 <br />
+          잊고 있다가도 문득 생각나는 노래들입니다<br />
+          커서를 올려 추천곡도 확인해 보세요요
+        </p>
+        <br />
+        <div class="fixed-grid">
+          <!-- 카드 1 -->
+          <div class="card song-card">
             <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-              class="d-block w-100"
-              alt="Slide 1"
+              src="./img/bg-img/item-1.jpg"
+              class="card-img-top song-img"
+              alt="Song 1"
             />
+            <div class="card-body song-card-body">
+              <h5 class="card-title kor">호프리스 로맨틱</h5>
+              <p class="card-text">Big Naughty</p>
+            </div>
+            <div class="hidden-text kor">07. 빠삐용,</div>
           </div>
-          <div class="carousel-item">
+          <!-- 카드 2 -->
+          <div class="card song-card">
             <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-              class="d-block w-100"
-              alt="Slide 2"
+              src="./img/bg-img/item-2.jpg"
+              class="card-img-top song-img"
+              alt="Song 2"
             />
+            <div class="card-body song-card-body">
+              <h5 class="card-title">Undercover Angerl</h5>
+              <p class="card-text">Swervy</p>
+            </div>
+            <div class="hidden-text kor">10. 파랑</div>
           </div>
-          <div class="carousel-item">
+          <!-- 카드 3 -->
+          <div class="card song-card">
             <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-              class="d-block w-100"
-              alt="Slide 3"
+              src="./img/bg-img/item-3.jpg"
+              class="card-img-top"
+              alt="Song 3"
             />
+            <div class="card-body song-card-body">
+              <h5 class="card-title">SKINS</h5>
+              <p class="card-text">XXXTENTACION</p>
+            </div>
+            <div class="hidden-text">05.BAD!</div>
+          </div>
+          <!-- 카드 4 -->
+          <div class="card song-card">
+            <img
+              src="./img/bg-img/item-4.jpg"
+              class="card-img-top"
+              alt="Song 4"
+            />
+            <div class="card-body song-card-body">
+              <h5 class="card-title">DOWN</h5>
+              <p class="card-text">creespy</p>
+            </div>
+            <div class="hidden-text">02.Touchdown!</div>
+          </div>
+          <!-- 카드 5 -->
+          <div class="card song-card">
+            <img
+              src="./img/bg-img/item-5.jpg"
+              class="card-img-top"
+              alt="Song 1"
+            />
+            <div class="card-body song-card-body">
+              <h5 class="card-title">El Dorado</h5>
+              <p class="card-text">24KGolden</p>
+            </div>
+            <div class="hidden-text">01.The Top</div>
+          </div>
+          <!-- 카드 6 -->
+          <div class="card song-card">
+            <img
+              src="./img/bg-img/item-6.jpg"
+              class="card-img-top"
+              alt="Song 2"
+            />
+            <div class="card-body song-card-body">
+              <h5 class="card-title">ITULT</h5>
+              <p class="card-text">0WAVE</p>
+            </div>
+            <div class="hidden-text">02.2u</div>
+          </div>
+          <!-- 카드 7 -->
+          <div class="card song-card">
+            <img
+              src="./img/bg-img/item-7.jpg"
+              class="card-img-top"
+              alt="Song 3"
+            />
+            <div class="card-body song-card-body">
+              <h5 class="card-title kor">그물, 덫, 발사대기, 포획</h5>
+              <p class="card-text">unofficalboyy, HAIF</p>
+            </div>
+            <div class="hidden-text">03.mmm</div>
+          </div>
+          <!-- 카드 8 -->
+          <div class="card song-card">
+            <img
+              src="./img/bg-img/item-8.jpg"
+              class="card-img-top"
+              alt="Song 4"
+            />
+            <div class="card-body song-card-body">
+              <h5 class="card-title kor">Blue Vinyl</h5>
+              <p class="card-text">can't be blue</p>
+            </div>
+            <div class="hidden-text">02.Sick of you</div>
           </div>
         </div>
-        <a
-          class="carousel-control-prev"
-          href="#recommendedSongsCarousel"
-          role="button"
-          data-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a
-          class="carousel-control-next"
-          href="#recommendedSongsCarousel"
-          role="button"
-          data-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
+    </div>
+    <div>
+      <footer class="footer">
+        <p>&copy; 2025 Sook Music Archiving. All rights reserved.</p>
+      </footer>
     </div>
 
     <!-- Bootstrap JS, Popper.js, and jQuery -->
