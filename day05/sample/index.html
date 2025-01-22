@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="My Portfolio" />
+    <meta
+      property="og:description"
+      content="Portfolio showcasing skills and an Osaka trip"
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1590354292232-c7d77d97455a?q=80&w=3165&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    />
+    <meta
+      property="og:url"
+      content="https://example.com/day05/sample/index.html"
+    />
+    <title>My Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="https://www.city.osaka.lg.jp/index.html/favicon.ico"
+    />
+    <style>
+      body {
+        padding-top: 56px; /* Adjust body padding to accommodate fixed navbar */
+        font-family: "Roboto", sans-serif;
+      }
+      .jumbotron {
+        background-image: url("https://images.unsplash.com/photo-1542051849875-f95d59d408ff?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        color: white;
+        text-align: center;
+        padding: 100px 25px;
+      }
+      .jumbotron h1,
+      .jumbotron p {
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+      }
+      .carousel-item img {
+        max-height: 400px;
+        object-fit: cover;
+      }
+      .flex-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 2rem;
+      }
+      .flex-item {
+        flex: 0 0 30%;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+      .spinner-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1050;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">My Portfolio</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio-tips">Portfolio Tips</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#osaka-trip">Osaka Trip</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">Welcome to My Portfolio</h1>
+        <p class="lead">
+          Showcasing my skills and projects with a touch of creativity.
+        </p>
+      </div>
+    </div>
+
+    <!-- Portfolio Tips -->
+    <div class="container mt-5" id="portfolio-tips">
+      <h2>Portfolio Development Tips</h2>
+      <div class="accordion" id="portfolioAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              Leverage Existing Tools (Don't Reinvent the Wheel)
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#portfolioAccordion"
+          >
+            <div class="accordion-body">
+              Instead of building everything from scratch, utilize existing
+              frameworks and templates like Bootstrap. Customize them to fit
+              your needs and showcase your ability to work with popular tools.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              Embrace AI Tools (But Use Them Wisely)
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#portfolioAccordion"
+          >
+            <div class="accordion-body">
+              AI tools like ChatGPT, Cline, and Gemini can be valuable assets in
+              your development process. Use them effectively to enhance your
+              productivity and creativity, but don't rely on them solely.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              Focus on Documentation (And Continuous Learning)
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingThree"
+            data-bs-parent="#portfolioAccordion"
+          >
+            <div class="accordion-body">
+              Study documentation, guides, and best practices to deepen your
+              understanding of the technologies you use. Highlight your
+              commitment to continuous learning and growth in your portfolio.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Osaka Trip -->
+    <div class="container mt-5" id="osaka-trip">
+      <h2>2-Night, 3-Day Osaka Trip</h2>
+      <div id="osakaCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://source.unsplash.com/1600x900/?osaka,castle"
+              class="d-block w-100"
+              alt="Osaka Castle"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Osaka Castle</h5>
+              <p>Explore the historic Osaka Castle and its surrounding park.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://source.unsplash.com/1600x900/?osaka,dotonbori"
+              class="d-block w-100"
+              alt="Dotonbori"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Dotonbori</h5>
+              <p>
+                Experience the vibrant nightlife and street food of Dotonbori.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://source.unsplash.com/1600x900/?osaka,food"
+              class="d-block w-100"
+              alt="Osaka Food"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Osaka Food</h5>
+              <p>Savor the delicious local cuisine of Osaka.</p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#osakaCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#osakaCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- Flexbox Example -->
+      <div class="flex-container">
+        <div class="flex-item">
+          <h4>Day 1</h4>
+          <p>Arrive in Osaka, visit Osaka Castle, explore Umeda Sky Building</p>
+        </div>
+        <div class="flex-item">
+          <h4>Day 2</h4>
+          <p>Day trip to Nara, visit Todai-ji Temple, explore Nara Park</p>
+        </div>
+        <div class="flex-item">
+          <h4>Day 3</h4>
+          <p>Explore Dotonbori, enjoy street food, depart from Osaka</p>
+        </div>
+      </div>
+
+      <!-- Modal Trigger -->
+      <div class="text-center mt-4">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#osakaModal"
+        >
+          Learn More About Osaka
+        </button>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="osakaModal"
+        tabindex="-1"
+        aria-labelledby="osakaModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="osakaModalLabel">
+                Osaka Trip Details
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Osaka is a vibrant city in Japan known for its modern
+                architecture, nightlife, and hearty street food. A 2-night,
+                3-day trip to Osaka could include visits to Osaka Castle,
+                Dotonbori, and Universal Studios Japan.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Trigger -->
+    <div class="container mt-4">
+      <button type="button" class="btn btn-success" id="toastBtn">
+        Show Toast
+      </button>
+    </div>
+
+    <!-- Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div
+        id="liveToast"
+        class="toast hide"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <strong class="me-auto">Notification</strong>
+          <small>Just now</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Welcome to Osaka!</div>
+      </div>
+    </div>
+
+    <!-- Spinner -->
+    <div class="spinner-container" id="spinner">
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (Optional, for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Show toast on button click
+      document
+        .getElementById("toastBtn")
+        .addEventListener("click", function () {
+          var myToast = new bootstrap.Toast(
+            document.getElementById("liveToast")
+          );
+          myToast.show();
+        });
+
+      // Hide spinner when page is fully loaded
+      window.addEventListener("load", function () {
+        document.getElementById("spinner").style.display = "none";
+      });
+    </script>
+  </body>
+</html>
