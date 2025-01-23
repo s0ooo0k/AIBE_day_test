@@ -2,4 +2,4 @@
 
 https://s0ooo0k.github.io/AIBE_day_test/
 
-![image]("https://i.ibb.co/R9ZTykY/cap.png")
+<img src="https://i.ibb.co/R9ZTykY/cap.png" alt="cap" border="0"></a>
