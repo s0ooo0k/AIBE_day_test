@@ -3,146 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My GitHub Blog</title>
+    <title>Bootstrap 5.3.3 Folder List</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <style>
-      body {
-        display: flex;
-      }
-
-      #sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 250px;
-        background-color: #343a40;
-        color: white;
-        padding: 20px;
-      }
-
-      #sidebar h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-
-      #sidebar a {
-        color: white;
-        text-decoration: none;
-        display: block;
-        margin: 10px 0;
-      }
-
-      #sidebar a:hover {
-        text-decoration: underline;
-      }
-
-      #content {
-        margin-left: 250px;
-        padding: 20px;
-        width: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="samplecss.css" />
   </head>
-
   <body>
-    <div id="sidebar">
-      <h1>My GitHub Blog</h1>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <div class="container d-flex justify-content-center">
+      <ul class="list-group mt-5">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div class="d-flex flex-row align-items-center">
+            <img
+              src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+              width="40"
+              class="me-2"
+            />
+            <div class="ms-2">
+              <h6 class="mb-0">Ogivet Maither</h6>
+              <div class="about">
+                <span>22 Files</span>
+                <span>Jan 21, 2020</span>
+              </div>
+            </div>
+          </div>
+          <div class="check">
+            <input type="checkbox" name="a" />
+          </div>
+        </li>
+
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div class="d-flex flex-row align-items-center">
+            <img
+              src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+              width="40"
+              class="me-2"
+            />
+            <div class="ms-2">
+              <h6 class="mb-0">Macan Worldgroup</h6>
+              <div class="about">
+                <span>62 Files</span>
+                <span>Jan 22, 2020</span>
+              </div>
+            </div>
+          </div>
+          <div class="check">
+            <input type="checkbox" name="a" />
+          </div>
+        </li>
+
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div class="d-flex flex-row align-items-center">
+            <img
+              src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+              width="40"
+              class="me-2"
+            />
+            <div class="ms-2">
+              <h6 class="mb-0">Organ parts</h6>
+              <div class="about">
+                <span>82 Files</span>
+                <span>Jan 29, 2020</span>
+              </div>
+            </div>
+          </div>
+          <div class="check">
+            <input type="checkbox" name="a" />
+          </div>
+        </li>
+
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div class="d-flex flex-row align-items-center">
+            <img
+              src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+              width="40"
+              class="me-2"
+            />
+            <div class="ms-2">
+              <h6 class="mb-0">Engine parts</h6>
+              <div class="about">
+                <span>182 Files</span>
+                <span>Jan 29, 2020</span>
+              </div>
+            </div>
+          </div>
+          <div class="check">
+            <input type="checkbox" name="a" />
+          </div>
+        </li>
+
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div class="d-flex flex-row align-items-center">
+            <img
+              src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+              width="40"
+              class="me-2"
+            />
+            <div class="ms-2">
+              <h6 class="mb-0">Turbine parts</h6>
+              <div class="about">
+                <span>802 Files</span>
+                <span>Jan 29, 2020</span>
+              </div>
+            </div>
+          </div>
+          <div class="check">
+            <input type="checkbox" name="a" />
+          </div>
+        </li>
+      </ul>
     </div>
 
-    <div id="content">
-      <section id="about" class="mb-5">
-        <h2>About Me</h2>
-        <p>
-          Hello! I'm a developer passionate about creating impactful projects.
-          This blog serves as a repository of my coding journey and learning
-          experiences.
-        </p>
-      </section>
-
-      <section id="projects" class="mb-5">
-        <h2>Projects</h2>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="https://via.placeholder.com/150"
-                class="card-img-top"
-                alt="Project Thumbnail"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Project Title 1</h5>
-                <p class="card-text">A brief description of this project.</p>
-                <a href="#" class="btn btn-primary">View on GitHub</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="https://via.placeholder.com/150"
-                class="card-img-top"
-                alt="Project Thumbnail"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Project Title 2</h5>
-                <p class="card-text">A brief description of this project.</p>
-                <a href="#" class="btn btn-primary">View on GitHub</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <img
-                src="https://via.placeholder.com/150"
-                class="card-img-top"
-                alt="Project Thumbnail"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Project Title 3</h5>
-                <p class="card-text">A brief description of this project.</p>
-                <a href="#" class="btn btn-primary">View on GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <h2>Contact Me</h2>
-        <p>
-          If you want to connect, feel free to reach out via the following
-          platforms:
-        </p>
-        <ul>
-          <li>
-            Email:
-            <a href="mailto:your.email@example.com">your.email@example.com</a>
-          </li>
-          <li>
-            GitHub:
-            <a href="https://github.com/your-username"
-              >github.com/your-username</a
-            >
-          </li>
-          <li>
-            LinkedIn:
-            <a href="https://linkedin.com/in/your-profile"
-              >linkedin.com/in/your-profile</a
-            >
-          </li>
-        </ul>
-      </section>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
