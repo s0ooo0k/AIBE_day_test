@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM2</title>
+  </head>
+  <body>
+    <!-- onClick => 함수의 실행, 호출을 집어넣음(html에서는 함수의 호출 자체를 집어넣음음) -->
+    <div>
+      <button onclick="increase()">늘어나요~</button>
+      <button onClick="decrease()">줄어들어요~</button>
+    </div>
+    <style>
+      #container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      #container > div {
+        background-color: rgb(218, 213, 208);
+        border-radius: 100%;
+        border: 1px solid black;
+      }
+      img {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px;
+        width: 100px;
+      }
+    </style>
+    <div id="container"></div>
+    <script>
+      let increaseCounter = 0;
+      function increase() {
+        const container = document.querySelector("#container");
+
+        const img = new Image();
+        img.src = "./star.png";
+        container.appendChild(img); // append와 appendChild의 차이?
+      }
+      function decrease() {
+        container.removeChild(container.lastElementChild);
+      }
+      function reset() {
+        container.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>

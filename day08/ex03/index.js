@@ -20,5 +20,6 @@ for (const v of objk) {
 }
 
 for (const key in obj) {
+  //엄밀히 말하자면 obj는 for문을 돌릴 수 없음. 따라서 in을 사용 ..
   console.log(key, obj[key]);
 }

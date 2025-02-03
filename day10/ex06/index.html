@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>기본 동작 방지</title>
+  </head>
+  <body>
+    <a id="what" href="https://school.programmers.co.kr/">A란 무엇인가</a>
+    <!-- a href => 마크업 랭귀지(문서)에 의한 이동동 -->
+    <!-- 이 동작을 무시하고 싶다면 -->
+    <script>
+      const what = document.querySelector("#what");
+      what.addEventListener("click", function (event) {
+        event.preventDefault(); // 동작을 막는다.
+        console.log(event);
+        location.href = "https://www.naver.com"; // 주소 자체를 바꿈(프로퍼티)
+        // 프로그래밍적 이동.. 미묘한 차이지만 결과가 크게 달라질 수 있음.
+      });
+    </script>
+
+    <form id="info">
+      <!-- 기본적인 폼에 종속, 이게 싫다면-->
+      <input name="name" type="text" placeholder="이름" />
+      <input name="age" type="text" placeholder="나이" />
+      <input name="job" type="text" placeholder="직업" />
+      <button>제출</button>
+      <!-- 제출을 누르면 주소에 파라미터를 넘김 -->
+    </form>
+    <script>
+      const infoform = document.querySelector("#info");
+      infoform.addEventListener("click", function (event) {
+        event.preventDefault();
+        // 기본 form의 제출 로직을 회피할 수 있음
+        console.log(event);
+        const formData = new FormData(infoform);
+        // name key로 input에 들어간 값이 value인 객체화 시켜줌
+        for (const [key, value] of formData.entries()) {
+          console.log(`${key}: ${value}`);
+        }
+      });
+    </script>
+  </body>
+</html>
