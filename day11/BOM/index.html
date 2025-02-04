@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOM</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <h1>MEMO</h1>
+    </div>
+    <!-- 1단계 : 색상을 하나 선택해서 메모를 하나 추가 -->
+    <!-- 2단계 : form에 인풋을 넣어서 변화할 수 있게 함-->
+    <div class="form-body">
+      <form id="controller" class="form-style">
+        <!-- label은 특정한 input에 이름표를 달아주고, click시 해당 input에 포커스를 주는 기능.
+             1) 라벨로 인풋을 감싼다 (상하위)
+             2) for-id -->
+        <label for="">
+          메모 내용을 작성하세요!
+          <input id="memoText" name="memoText" type="text" />
+        </label>
+        <label for="">
+          배경 색상을 선택하세요!
+          <input
+            id="memoBgColor"
+            name="memoBgColor"
+            type="color"
+            value="#ece6a0"
+          />
+        </label>
+        <button>만들기</button>
+      </form>
+    </div>
+    <section id="view"></section>
+
+    <script>
+      // 5단계 메모 데이터 보호하기
+      function onload() {
+        // 함수는 호출만 가능하다 -> 접근할 수 없다.
+        // 개발자 도구에서 접근 불가!
+        // Math.random을 바탕으로 hex를 생성하되 배경색으로 적절한 옅은 hex 색상을 생성하는 익명함수
+        function goodBgColor() {
+          return `#${[...Array(3)]
+            .map(() => Math.floor(Math.random() * 56) + 200)
+            .map((v) => v.toString(16).padStart(2, "0"))
+            .join("")}`;
+        }
+        // 3단계 : 메모 여러 개 추가
+        /*
+      const memo = {
+        bgColor: "#F0EDCC",
+        text: "원하는 메모를 입력하세요. 색상과 함께 선택하세요. 오늘 하루를 공유해주세요",
+      };
+      
+      */ // 해당 객체가 배열이 되어야 한다! (여러 개가 되려면)
+
+        const memoData = [
+          // 배열로 변경
+          {
+            bgColor: goodBgColor(),
+            text: "원하는 메모를 입력하세요. 색상과 함께 선택하세요. 오늘 하루를 공유해주세요",
+          },
+        ];
+
+        function drawMemo() {
+          // #view를 찾아서 memo의 bgColor를 배경색으로 하고
+          // text를 textContent로 하는 div를 만드는 함수
+          const view = document.querySelector("#view");
+          view.innerHTML = ""; // 리셋
+          /*
+        view.innerHTML = `<div class="memo-box">${memo.text}</div>`;
+        // CSS의 프로퍼티 -> js의 객체
+        const memoElement = view.querySelector(".memo-box");
+        memoElement.style.backgroundColor = memo.bgColor;
+        memoElement.style.padding = "10px";
+        */
+
+          for (const memo of memoData) {
+            const memoElement = document.createElement("div");
+            memoElement.classList.add("memo-box");
+            memoElement.textContent = memo.text;
+            memoElement.style.backgroundColor = memo.bgColor;
+            memoElement.style.padding = "10px";
+            view.appendChild(memoElement);
+
+            // 4단계 : 메모 삭제하기
+            // 삭제 버튼을 추가
+            const deleteButton = document.createElement("button"); // 태그
+            deleteButton.textContent = "삭제"; // 텍스트
+            deleteButton.addEventListener("click", () => {
+              memoData.splice(memoData.indexOf(memo), 1); // memoData 배열에서 해당 메모 삭제
+              memoElement.remove(); // remove는 해당 dom 객체를 (자기자신) 삭제.
+            }); // 함수 객체 (화살표 함수)
+            memoElement.appendChild(deleteButton);
+          }
+        }
+
+        const controller = document.querySelector("#controller");
+        // btn을 누르면 제출, 제출에 대한 이벤트 리스너
+        controller.addEventListener(
+          "submit", // 호이스팅, handleForm 오류X
+          function (event) {
+            // 타입 추론
+            // #controller에 listner로 등록할 handler, prevent default. (form 기본 제출)
+            // form에 있는 text, color -> memo를 수정
+            event.preventDefault(); // 기본 제출을 막음. 주소 뒤에 `?`가 안 붙는다!
+            const form = new FormData(controller);
+            const memo = {}; // 임시로 만든다 // 이 값이 위의 memoData에 들어가야됨
+            // console.log(...form.entries);
+            memo.text = form.get("memoText");
+            memo.bgColor = form.get("memoBgColor");
+            memoData.push(memo);
+
+            drawMemo();
+          }
+        );
+        drawMemo();
+      }
+      onload();
+    </script>
+  </body>
+</html>

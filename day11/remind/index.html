@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remind</title>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      const box = document.querySelector("#box");
+      try {
+        null.errorProperty; // null에 undefined 찍기 > 오류 > catch 실행행
+        box.textContent = "try";
+      } catch (error) {
+        //catch() {
+        // 어떤 error인지 알고 싶으면
+        box.textContent = error; // 이후 toString
+        // 출력 : TypeError: Cannot read properties of null (reading 'errorProperty')
+      } finally {
+        box.textContent += "finally";
+      }
+    </script>
+  </body>
+</html>
