@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOM의 MEMO</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="./favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <!-- OG Image -->
+    <meta property="og:title" content="Today's Memo 📝" />
+    <meta
+      property="og:description"
+      content="성공? 이제 에러 해결 TIL을 작성합시다..."
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/s0ooo0k/AIBE_day_test/refs/heads/main/day11/BOM/draw.jpg"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Kumar+One&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <h1>Today's MEMO</h1>
+      <p class="main-text-p">
+        메모를 다시 보고 싶다면 꼭! "로컬 저장"을 클릭하세요 <br />
+        *주의! 삭제를 누르면 메모가 영원히 사라집니다.
+      </p>
+    </div>
+    <div class="form-body">
+      <form id="controller" class="form-style">
+        <label for="">
+          메모 내용을 작성하세요!
+          <input id="textInput" name="memoText" type="text" />
+        </label>
+        <label for="">
+          링크를 입력하세요!
+          <input name="memoLink" type="url" />
+        </label>
+        <label for="">
+          배경 색상을 선택하세요!
+          <input id="colorInput" name="memoBgColor" type="color" />
+        </label>
+        <button class="btn-btnstyle">만들기</button>
+      </form>
+    </div>
+    <section id="view"></section>
+
+    <script>
+      // api 배포
+      async function onload() {
+        async function useGemeni() {
+          const url = "https://deadpan-past-calculator.glitch.me";
+          const response = await fetch(url);
+          return await response.text();
+        }
+        document.querySelector("#textInput").value = await useGemeni();
+
+        // 랜덤 배경색색
+        function goodBgColor() {
+          return `#${[...Array(3)]
+            .map(() => Math.floor(Math.random() * 56) + 200)
+            .map((v) => v.toString(16).padStart(2, "0"))
+            .join("")}`;
+        }
+        document.querySelector("#colorInput").value = goodBgColor();
+
+        // 메모 추가가
+        const memoData = [
+          ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
+        ];
+
+        function drawMemo() {
+          const view = document.querySelector("#view");
+          view.innerHTML = "";
+          for (const memo of memoData) {
+            // 메모 추가
+            const memoElement = document.createElement("div");
+            memoElement.classList.add("memo-box");
+            memoElement.textContent = memo.text;
+            memoElement.style.backgroundColor = memo.bgColor;
+            view.appendChild(memoElement);
+
+            //버튼 컨테이너 생성
+            const buttonContainer = document.createElement("div");
+            buttonContainer.classList.add("button-container");
+
+            // 버튼 활용 메모 삭제제
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("btn-btnstyle-2");
+            deleteButton.textContent = "삭제";
+            deleteButton.addEventListener("click", () => {
+              // memoData 배열에서 해당 메모의 인덱스를 찾기
+              // DOM + 로컬 모두 삭제
+              const index = memoData.indexOf(memo);
+              if (index !== -1) {
+                memoData.splice(index, 1); // 배열에서 삭제
+              }
+              // localStorage에 업데이트된 배열 다시 저장
+              localStorage.setItem("memoStorage", JSON.stringify(memoData));
+              // DOM에서 삭제
+              memoElement.remove();
+            });
+            buttonContainer.appendChild(deleteButton);
+
+            // 로컬 저장 버튼
+            const localSaveButton = document.createElement("button");
+            localSaveButton.textContent = "로컬 저장";
+            localSaveButton.classList.add("btn-btnstyle-2");
+            localSaveButton.addEventListener("click", () => {
+              localStorage.setItem(
+                "memoStorage",
+                JSON.stringify([
+                  ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
+                  memo,
+                ])
+              );
+            });
+            buttonContainer.appendChild(localSaveButton);
+            // 세션 저장 버튼
+            const sessionSaveButton = document.createElement("button");
+            sessionSaveButton.classList.add("btn-btnstyle-2");
+            sessionSaveButton.textContent = "세션 저장";
+            sessionSaveButton.addEventListener("click", () => {
+              sessionStorage.setItem(
+                "memoStorage",
+                JSON.stringify([
+                  ...(JSON.parse(sessionStorage.getItem("memoStorage")) ?? []),
+                  memo,
+                ])
+              );
+            });
+            buttonContainer.appendChild(sessionSaveButton);
+
+            // 링크 버튼을 추가(새 창 열기, 현재 창 열기)
+            if (memo.link) {
+              const newLinkButton = document.createElement("button");
+              newLinkButton.classList.add("btn-btnstyle-2");
+              newLinkButton.textContent = "새 창";
+              buttonContainer.appendChild(newLinkButton);
+
+              const nowLinkButton = document.createElement("button");
+              nowLinkButton.classList.add("btn-btnstyle-2");
+              nowLinkButton.textContent = "현재 창";
+              buttonContainer.appendChild(nowLinkButton);
+
+              nowLinkButton.addEventListener(
+                "click",
+                () => (location.href = memo.link)
+              );
+              newLinkButton.addEventListener("click", () =>
+                window.open(memo.link)
+              );
+            }
+            memoElement.appendChild(buttonContainer);
+          }
+        }
+
+        const controller = document.querySelector("#controller");
+        // form의 submit으로 실행하기
+        controller.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const form = new FormData(controller);
+          const memo = {};
+          memo.text = form.get("memoText");
+          memo.bgColor = form.get("memoBgColor");
+          memo.link = form.get("memoLink");
+          memoData.push(memo);
+
+          drawMemo();
+        });
+        drawMemo();
+      }
+      onload();
+    </script>
+  </body>
+</html>

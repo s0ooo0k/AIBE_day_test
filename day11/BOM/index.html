@@ -20,21 +20,28 @@
     />
     <link rel="manifest" href="./favicon/site.webmanifest" />
     <!-- OG Image -->
-    <meta property="og:title" content="MEMO장이 필요하신가요? 📝" />
-    <meta property="og:description" content="BOM이란 무엇인가" />
+    <meta property="og:title" content="Today's Memo 📝" />
+    <meta
+      property="og:description"
+      content="성공? 이제 에러 해결 TIL을 작성합시다..."
+    />
     <meta
       property="og:image"
       content="https://raw.githubusercontent.com/s0ooo0k/AIBE_day_test/refs/heads/main/day11/BOM/draw.jpg"
     />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Kumar+One&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
     </style>
 
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div>
-      <h1>MEMO</h1>
+      <h1>Today's MEMO</h1>
+      <p class="main-text-p">
+        메모를 다시 보고 싶다면 "로컬 저장"을 클릭하세요 <br />
+        *주의! 삭제를 누르면 메모가 영원히 사라집니다.
+      </p>
     </div>
     <!-- 1단계 : 색상을 하나 선택해서 메모를 하나 추가 -->
     <!-- 2단계 : form에 인풋을 넣어서 변화할 수 있게 함-->
@@ -48,7 +55,7 @@
         <!-- 8단계 : LLM을 이영한 추천 -->
         <label for="">
           메모 내용을 작성하세요!
-          <input id="memoText" name="memoText" type="text" />
+          <input id="textInput" name="memoText" type="text" />
         </label>
         <label for="">
           링크를 입력하세요!
@@ -56,7 +63,7 @@
         </label>
         <label for="">
           배경 색상을 선택하세요!
-          <input id="memoBgColor" name="memoBgColor" type="color" />
+          <input id="colorInput" name="memoBgColor" type="color" />
         </label>
         <button class="btn-btnstyle">만들기</button>
       </form>
@@ -81,13 +88,49 @@
 
       // 저장 버튼을 2개로 만들어 차이를 보자
 
-      function onload() {
+      // awaint를 사용하기 위해서는 그걸 포함한 함수가 async여야함
+      async function onload() {
         // 함수는 호출만 가능하다 -> 접근할 수 없다.
         // 개발자 도구에서 접근 불가!
         // Math.random을 바탕으로 hex를 생성하되 배경색으로 적절한 옅은 hex 색상을 생성하는 익명함수
-        const apiKey = "api키";
+        //const apiKey = "api key";
         // es 8
-        // es8
+
+        async function useGemeni() {
+          // 로컬에서 직접 api key 사용 방법,
+          // 배포 X
+          //const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+          //const response = await fetch(url, {
+          // method: "POST",
+          // body: JSON.stringify({
+          //   contents: [
+          //     {
+          //       parts: [
+          //         {
+          // gemini에게 묻는 프롬프트
+          //          text: "메모의 기본 내용은 뭐가 들어가야할까? 10자 이내로 쓰고, 끝은 '등을 작성하세요'로 끝나면 좋겠어",
+          //         },
+          //       ],
+          //    },
+          //   ],
+          // }),
+          // // 필요한 옵션들 (차후 설명)
+          //  headers: {
+          //   "Content-Type": "application/json",
+          //  },
+          //});
+          // json의 형태로 온 응답을 객체로 해석(파싱 -> 별도로 JSON.parse를 하진 않아도 알아서 역직렬화해서 객체로 만들어줌)
+          // const json = await response.json();
+          // 객체 내부의 구조(프로퍼티, 배열, 객체 등...)을 분석해서 내가 원하는 구조 보기 -> 잘 모르겠으면 api 문서나 다른 사람들 글 읽기
+          //   console.log(json);
+          // return json["candidates"][0]["content"]["parts"][0]["text"];
+
+          // key 배포 X glitch 사용
+          const url = "https://deadpan-past-calculator.glitch.me";
+          const response = await fetch(url);
+          return await response.text();
+        }
+        document.querySelector("#textInput").value = await useGemeni();
 
         function goodBgColor() {
           return `#${[...Array(3)]
@@ -95,7 +138,7 @@
             .map((v) => v.toString(16).padStart(2, "0"))
             .join("")}`;
         }
-        document.querySelector("#memoBgColor").value = goodBgColor();
+        document.querySelector("#colorInput").value = goodBgColor();
         // 3단계 : 메모 여러 개 추가
         /*
       const memo = {
@@ -119,7 +162,6 @@
         // const memoData = [JSON.parse(localStorage.getItem("memo"))];
         const memoData = [
           ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
-          ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
         ];
 
         function drawMemo() {
@@ -127,6 +169,7 @@
           // text를 textContent로 하는 div를 만드는 함수
           const view = document.querySelector("#view");
           view.innerHTML = ""; // 리셋
+
           /*
             view.innerHTML = `<div class="memo-box">${memo.text}</div>`;
             // CSS의 프로퍼티 -> js의 객체
@@ -140,19 +183,32 @@
             memoElement.classList.add("memo-box");
             memoElement.textContent = memo.text;
             memoElement.style.backgroundColor = memo.bgColor;
-            memoElement.style.padding = "10px";
             view.appendChild(memoElement);
+
+            //버튼 컨테이너 생성
+            const buttonContainer = document.createElement("div");
+            buttonContainer.classList.add("button-container");
 
             // 4단계 : 메모 삭제하기
             // 삭제 버튼을 추가
-            const deleteButton = document.createElement("button"); // 태그
+            const deleteButton = document.createElement("button");
             deleteButton.classList.add("btn-btnstyle-2");
             deleteButton.textContent = "삭제"; // 텍스트
             deleteButton.addEventListener("click", () => {
-              memoData.splice(memoData.indexOf(memo), 1); // memoData 배열에서 해당 메모 삭제
-              memoElement.remove(); // remove는 해당 dom 객체를 (자기자신) 삭제.
+              // memoData 배열에서 해당 메모의 인덱스를 찾기
+              const index = memoData.indexOf(memo);
+
+              if (index !== -1) {
+                memoData.splice(index, 1); // 배열에서 삭제
+              }
+
+              // localStorage에 업데이트된 배열 다시 저장
+              localStorage.setItem("memoStorage", JSON.stringify(memoData));
+
+              // DOM에서 삭제
+              memoElement.remove();
             }); // 함수 객체 (화살표 함수)
-            memoElement.appendChild(deleteButton);
+            buttonContainer.appendChild(deleteButton);
 
             // 로컬 저장 버튼
             const localSaveButton = document.createElement("button");
@@ -185,7 +241,7 @@
                 ])
               );
             });
-            memoElement.appendChild(localSaveButton);
+            buttonContainer.appendChild(localSaveButton);
             // 세션 저장 버튼
             const sessionSaveButton = document.createElement("button");
             sessionSaveButton.classList.add("btn-btnstyle-2");
@@ -199,21 +255,21 @@
                 ])
               );
             });
-            memoElement.appendChild(sessionSaveButton);
+            buttonContainer.appendChild(sessionSaveButton);
+
             // 링크 버튼을 추가합니다 (새 창 열기, 현재 창 열기)
             // console.log(memo.link);
-
             if (memo.link) {
               //link라고 하는 프로퍼티를 평가해서 존재할 때만..
               const newLinkButton = document.createElement("button");
               newLinkButton.classList.add("btn-btnstyle-2");
               newLinkButton.textContent = "새 창";
-              memoElement.appendChild(newLinkButton);
+              buttonContainer.appendChild(newLinkButton);
 
               const nowLinkButton = document.createElement("button");
               nowLinkButton.classList.add("btn-btnstyle-2");
               nowLinkButton.textContent = "현재 창";
-              memoElement.appendChild(nowLinkButton);
+              buttonContainer.appendChild(nowLinkButton);
 
               nowLinkButton.addEventListener(
                 "click",
@@ -223,6 +279,7 @@
                 window.open(memo.link)
               );
             }
+            memoElement.appendChild(buttonContainer);
           }
         }
 

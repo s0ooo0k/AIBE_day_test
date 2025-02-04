@@ -18,6 +18,11 @@
   font-weight: 400;
   font-style: normal;
 }
+.kumar-one-regular {
+  font-family: "Kumar One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 body {
   font-family: "Noto Sans KR", serif;
@@ -25,7 +30,7 @@ body {
 }
 
 h1 {
-  font-family: "Roboto", serif;
+  font-family: "Kumar One", serif;
   text-align: center;
 }
 
@@ -43,9 +48,9 @@ h1 {
   justify-content: center;
   align-items: center;
   width: 300px;
-  height: 300px;
-  background-color: #f0edcc;
-  padding: 10px;
+  min-height: 300px;
+  max-height: 400px;
+  padding: 20px 10px 10px;
   border-radius: 10px;
   text-align: center;
   word-wrap: break-word;
@@ -53,6 +58,12 @@ h1 {
   padding: 10px;
 }
 
+.main-text-p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
 /* 전체 폼 스타일 */
 .form-body {
   display: flex;
@@ -149,4 +160,21 @@ input[type="color"]::-moz-color-swatch {
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* 버튼 간격 */
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.button-container button {
+  white-space: normal;
+  text-align: center;
+  word-wrap: break-word;
+  padding: 10px;
 }
