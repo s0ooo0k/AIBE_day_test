@@ -38,18 +38,19 @@ h1 {
 }
 
 .memo-box {
-  width: 200px; /* 정사각형 크기 */
-  height: 200px;
-  background-color: #f0edcc;
   display: flex;
-  align-items: center;
+  flex-direction: column; /*텍스트 위, 버튼 아래 배치*/
   justify-content: center;
-  text-align: center;
-  word-wrap: break-word; /* 긴 단어 줄바꿈 */
-  overflow: hidden; /* 넘치는 내용 숨김 */
-  border-radius: 10px; /* 살짝 둥글게 */
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: #f0edcc;
   padding: 10px;
-  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  word-wrap: break-word;
+  overflow: auto;
+  padding: 10px;
 }
 
 /* 전체 폼 스타일 */
@@ -119,12 +120,12 @@ input[type="color"]::-moz-color-swatch {
 }
 
 /* 버튼 스타일 */
-.form-style button {
+.btn-btnstyle {
   font-family: "Noto Sans KR", serif;
   padding: 10px;
   margin-top: 10px;
   font-size: 16px;
-  background: #f0edcc;
+  background: #b9b8ab;
   color: black;
   border: none;
   border-radius: 6px;
@@ -136,4 +137,16 @@ input[type="color"]::-moz-color-swatch {
 /* 버튼 호버 효과 */
 .form-style button:hover {
   background: #dfbd75;
+}
+
+.btn-btnstyle-2 {
+  font-family: "Noto Sans KR", serif;
+  font-size: 16px;
+  background: #f1f1f1;
+  opacity: 0.8;
+  color: black;
+  border: solid 1px rgb(153, 153, 153);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
 }

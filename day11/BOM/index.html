@@ -4,9 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BOM의 MEMO</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-    </style>
     <!-- Favicon -->
     <link
       rel="icon"
@@ -29,6 +26,10 @@
       property="og:image"
       content="https://raw.githubusercontent.com/s0ooo0k/AIBE_day_test/refs/heads/main/day11/BOM/draw.jpg"
     />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -42,52 +43,83 @@
         <!-- label은 특정한 input에 이름표를 달아주고, click시 해당 input에 포커스를 주는 기능.
              1) 라벨로 인풋을 감싼다 (상하위)
              2) for-id -->
+
+        <!-- 7단계 : 메모에 외부 링크 연결 버튼 만들기 -->
+        <!-- 8단계 : LLM을 이영한 추천 -->
         <label for="">
           메모 내용을 작성하세요!
           <input id="memoText" name="memoText" type="text" />
         </label>
         <label for="">
-          배경 색상을 선택하세요!
-          <input
-            id="memoBgColor"
-            name="memoBgColor"
-            type="color"
-            value="#ece6a0"
-          />
+          링크를 입력하세요!
+          <input name="memoLink" type="url" />
         </label>
-        <button>만들기</button>
+        <label for="">
+          배경 색상을 선택하세요!
+          <input id="memoBgColor" name="memoBgColor" type="color" />
+        </label>
+        <button class="btn-btnstyle">만들기</button>
       </form>
     </div>
     <section id="view"></section>
 
     <script>
-      // 5단계 메모 데이터 보호하기
-      // 6단계 메모 보존하기
+      // 5단계 메모 데이터 보호하기 -> onload
+      // 6단계 메모 보존하기(BOM) -> storage
+
+      // (1) 굳이 수동으로나 프로그래밍적으로 지우지 않는다면
+      // (2) 특정 용량까지 보존되는
+      // (3) 특정 주소에 할당된
+      // (4) key-value 형태의 브라우저의 저장공간(localStroage)
+      //console.log("localStorage", localStorage);
+
+      // (1) 특정 페이지가 열려 있는 동안에만 지속되는는
+      // (2) 특정 용량까지 보존되는
+      // (3) 특정 주소에 할당된
+      // (4) key-value 형태의 브라우저의 저장공간(sessionStroage)
+      //console.log("ssessionStorage", sessionStorage);
+
+      // 저장 버튼을 2개로 만들어 차이를 보자
+
       function onload() {
         // 함수는 호출만 가능하다 -> 접근할 수 없다.
         // 개발자 도구에서 접근 불가!
         // Math.random을 바탕으로 hex를 생성하되 배경색으로 적절한 옅은 hex 색상을 생성하는 익명함수
+        const apiKey = "api키";
+        // es 8
+        // es8
+
         function goodBgColor() {
           return `#${[...Array(3)]
             .map(() => Math.floor(Math.random() * 56) + 200)
             .map((v) => v.toString(16).padStart(2, "0"))
             .join("")}`;
         }
+        document.querySelector("#memoBgColor").value = goodBgColor();
         // 3단계 : 메모 여러 개 추가
         /*
       const memo = {
         bgColor: "#F0EDCC",
         text: "원하는 메모를 입력하세요. 색상과 함께 선택하세요. 오늘 하루를 공유해주세요",
       };
-      
+
       */ // 해당 객체가 배열이 되어야 한다! (여러 개가 되려면)
 
-        const memoData = [
+        /* 스토리지를 위하여 메모 삭제..
+         const memoData = [
           // 배열로 변경
           {
             bgColor: goodBgColor(),
             text: "원하는 메모를 입력하세요. 색상과 함께 선택하세요. 오늘 하루를 공유해주세요",
           },
+        ];
+        */
+
+        // JSON.parse를 통해 문자열화 되어서 직렬화(Serialization, 메모리에 저장할 수 있게 변환)되었던 객체를 다시 파싱하여 역직렬화(Deserialization)하여 객체화하여 저장
+        // const memoData = [JSON.parse(localStorage.getItem("memo"))];
+        const memoData = [
+          ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
+          ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
         ];
 
         function drawMemo() {
@@ -96,12 +128,12 @@
           const view = document.querySelector("#view");
           view.innerHTML = ""; // 리셋
           /*
-        view.innerHTML = `<div class="memo-box">${memo.text}</div>`;
-        // CSS의 프로퍼티 -> js의 객체
-        const memoElement = view.querySelector(".memo-box");
-        memoElement.style.backgroundColor = memo.bgColor;
-        memoElement.style.padding = "10px";
-        */
+            view.innerHTML = `<div class="memo-box">${memo.text}</div>`;
+            // CSS의 프로퍼티 -> js의 객체
+            const memoElement = view.querySelector(".memo-box");
+            memoElement.style.backgroundColor = memo.bgColor;
+            memoElement.style.padding = "10px";
+            */
 
           for (const memo of memoData) {
             const memoElement = document.createElement("div");
@@ -114,12 +146,83 @@
             // 4단계 : 메모 삭제하기
             // 삭제 버튼을 추가
             const deleteButton = document.createElement("button"); // 태그
+            deleteButton.classList.add("btn-btnstyle-2");
             deleteButton.textContent = "삭제"; // 텍스트
             deleteButton.addEventListener("click", () => {
               memoData.splice(memoData.indexOf(memo), 1); // memoData 배열에서 해당 메모 삭제
               memoElement.remove(); // remove는 해당 dom 객체를 (자기자신) 삭제.
             }); // 함수 객체 (화살표 함수)
             memoElement.appendChild(deleteButton);
+
+            // 로컬 저장 버튼
+            const localSaveButton = document.createElement("button");
+            localSaveButton.textContent = "로컬 저장";
+            localSaveButton.classList.add("btn-btnstyle-2");
+            localSaveButton.addEventListener("click", () => {
+              // key, value -> 둘다 string.
+              //   const memoStr = JSON.stringify(memo); // 직렬화. 문자열화
+              //   console.log(memoStr);
+              //   localStorage.setItem("memo", memoStr); // 저장
+              // false, [], "", 0, null, undefined
+              //   localStorage.clear()
+              // 인덱스를 잡아서 해당 것만 pop하거나 shift하거나... 이런거...
+              /*
+              const memoStorage = localStorage.getItem("memoStorage")
+                ? localStorage.getItem("memoStorage")
+                : "[]";
+              console.log(memoStorage);
+              const memoStorage2 = JSON.parse(memoStorage);
+              console.log(memoStorage2);
+              memoStorage2.push(memo);
+              console.log(memoStorage2);
+              localStorage.setItem("memoStorage", JSON.stringify(memoStorage2));
+              */
+              localStorage.setItem(
+                "memoStorage",
+                JSON.stringify([
+                  ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
+                  memo,
+                ])
+              );
+            });
+            memoElement.appendChild(localSaveButton);
+            // 세션 저장 버튼
+            const sessionSaveButton = document.createElement("button");
+            sessionSaveButton.classList.add("btn-btnstyle-2");
+            sessionSaveButton.textContent = "세션 저장";
+            sessionSaveButton.addEventListener("click", () => {
+              sessionStorage.setItem(
+                "memoStorage",
+                JSON.stringify([
+                  ...(JSON.parse(sessionStorage.getItem("memoStorage")) ?? []),
+                  memo,
+                ])
+              );
+            });
+            memoElement.appendChild(sessionSaveButton);
+            // 링크 버튼을 추가합니다 (새 창 열기, 현재 창 열기)
+            // console.log(memo.link);
+
+            if (memo.link) {
+              //link라고 하는 프로퍼티를 평가해서 존재할 때만..
+              const newLinkButton = document.createElement("button");
+              newLinkButton.classList.add("btn-btnstyle-2");
+              newLinkButton.textContent = "새 창";
+              memoElement.appendChild(newLinkButton);
+
+              const nowLinkButton = document.createElement("button");
+              nowLinkButton.classList.add("btn-btnstyle-2");
+              nowLinkButton.textContent = "현재 창";
+              memoElement.appendChild(nowLinkButton);
+
+              nowLinkButton.addEventListener(
+                "click",
+                () => (location.href = memo.link)
+              );
+              newLinkButton.addEventListener("click", () =>
+                window.open(memo.link)
+              );
+            }
           }
         }
 
@@ -137,6 +240,7 @@
             // console.log(...form.entries);
             memo.text = form.get("memoText");
             memo.bgColor = form.get("memoBgColor");
+            memo.link = form.get("memoLink");
             memoData.push(memo);
 
             drawMemo();
