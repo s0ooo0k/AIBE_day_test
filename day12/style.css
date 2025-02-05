@@ -66,6 +66,10 @@ header {
   transform: scale(1.05);
 }
 
+code {
+  font-family: "Noto Sans KR", serif;
+}
+
 /* 폼 스타일 */
 form {
   background: white;
@@ -158,4 +162,15 @@ button:hover {
 
 #container div button:hover {
   background: #87ceeb;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 8px;
+  background: #5d7ab9;
+  color: white;
+  font-weight: bold;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
