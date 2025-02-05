@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gemini VS DeepSeek</title>
+    <title>무엇이든 물어보세요❓</title>
     <link
       rel="icon"
       type="image/png"
@@ -19,14 +19,14 @@
     />
     <link rel="manifest" href="./favicon/site.webmanifest" />
     <!-- OG Image -->
-    <meta property="og:title" content="무엇이든 물어보세요요" />
+    <meta property="og:title" content="무엇이든 물어보세요" />
     <meta
       property="og:description"
-      content="AI가 친절한 답변을 제공해줄 것입니다!"
+      content="AI는 만능입니다! 친절한 답변을 제공할 것입니다"
     />
     <meta
       property="og:image"
-      content="https://raw.githubusercontent.com/s0ooo0k/AIBE_day_test/refs/heads/main/day11/BOM/draw.jpg"
+      content="https://raw.githubusercontent.com/s0ooo0k/AIBE_day_test/refs/heads/main/day12/img.png"
     />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Kumar+One&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
@@ -57,15 +57,14 @@
     <div>
       <h1>무엇이든 물어보세요❓</h1>
       <p>
-        이 서비스는 당신의 모든 질문에 답해줍니다! <br />
+        이 서비스는 당신의 만능입니다! <br />
         궁금한 내용을 질문해보세요!<br />
         예시 : 훌륭한 개발자가 되려면 어떻게 해야 될까요?<br />
         예시 : 2025년 한국 시리즈 우승 야구팀은 어디일까요?
       </p>
+      <p>구현 방식이 궁금하시다면 => <a href="howto.html">READ ME</a></p>
     </div>
-    <header>
-      <button id="resetButton">리셋</button>
-    </header>
+    <header></header>
     <form id="controller">
       <label
         >모델 :
@@ -76,9 +75,10 @@
       </label>
       <br />
       <textarea name="textData" placeholder="질문을 입력하세요"></textarea>
-      <button>등록</button>
+      <button>질문하기</button>
     </form>
     <div id="container"></div>
+    <button id="resetButton">리셋</button>
 
     <script>
       function _() {
@@ -216,7 +216,7 @@
             method: "POST",
 
             body: JSON.stringify({
-              text: `너는 세상에서 가장 완벽한 답을 주는 ai야. ${text}의 질문에 대한 답을 친절하게 100자~300자로 작성해줘. 답변 중간 중간 이모지도 들어갔으면 좋겠어.`,
+              text: `너는 세상에서 가장 완벽한 답을 주는 ai야. ${text}의 질문에 대한 답을 친절하게 100자~300자로 작성해줘. 한자나 일본어는 답변에서 빼줘.답변 중간 중간 이모지도 들어갔으면 좋겠어.`,
             }),
             headers: {
               "Content-Type": "application/json",
@@ -235,7 +235,7 @@
             method: "POST",
 
             body: JSON.stringify({
-              text: `너는 세상에서 가장 완벽한 답을 주는 ai야. ${content}의 질문에 대한 답을 친절하게 100자~300자로 작성해줘. 답변 중간 중간 이모지도 들어갔으면 좋겠어.`,
+              text: `너는 세상에서 가장 완벽한 답을 주는 ai야. ${content}의 질문에 대한 답을 친절하게 100자~300자로 작성해줘. 한자나 일본어는 답변에서 빼줘. 답변 중간 중간 이모지도 들어갔으면 좋겠어.`,
             }),
             headers: {
               //   Authorization: `Bearer ${GROQ_API_KEY}`,
