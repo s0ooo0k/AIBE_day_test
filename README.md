@@ -1,6 +1,8 @@
 # 🚀 AIBE Day Test
 
 > 데브코스 실습 모음 프로젝트입니다. 각 실습의 결과물은 [여기](https://s0ooo0k.github.io/AIBE_day_test/)에서 확인하실 수 있습니다!
+![1](https://github.com/user-attachments/assets/4edf6e3a-f869-472a-bbfd-9b5d4e691174)
+
 
 
 ## 📋 실습 목록
