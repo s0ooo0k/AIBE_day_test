@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>무엇이든 물어보세요❓</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="./favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <!-- OG Image -->
+    <meta property="og:title" content="무엇이든 물어보세요" />
+    <meta
+      property="og:description"
+      content="AI는 만능입니다! 친절한 답변을 제공할 것입니다"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/s0ooo0k/AIBE_day_test/refs/heads/main/day12/img.png"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Kumar+One&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- 
+    1. CRUD -> Persistence(영속성) -> JPA DB -> Storage -> BOM (LocalStorage, SessionSTroage) 
+    2. LLM - 생성형 AI - 추천 컨텐츠, 요약, 번역, ... -> 포함 -> API -> 네트워크 요청(fetch, axios) -> 비동기 프로그램
+    3. API -> API Key, Dat -> 임의적인 수정, Secure 코딩 -> CORS(Proxy, WhiteList -> 서버 자체가 접근을 허용 -> 설치, 설정), API KEY - 사용량, 비용 -> 노출(해킹)
+    4. 파일 다루기 -> WAS, WS -> AWS S3, Free Tier, Baas / Headless CMS -> 
+    객체 스토리지 -> 1) 직접 클라우드 인스턴스에 연결 2) 클라우드에서 제공하는 네트워크 API를 사용해서 원격으로 전달 
+    -> 여행 => '여행'은 거들뿐,
+    AI 시대 개발자는 어느 방향으로 나아가야 하는가? -> 시간이 남거나, 다양한 걸 할 것이다
+    -> 디자인, 영업, (<- 어느정도 기질적 영역) 기획, 사업, ... 
+    기획, 사업 => 여행 => 블로그? 지도?
+    => 어플리케이션 순위를 보거나, 요새 뉴스를보고, 거기에 이슈를 가져온 다음 그냥 여행을 붙이고,
+    => 그리고 위에 4가지를 붙여 개발을 하기 => 포트폴리오
+
+    (1) 트렌드, (전형적이지만 강력한) 사람의 욕망을 주제에 붙이던가
+    (2) 하는 김에 다른 사람들이 도달하지 못한, 혹은 사업성이 없어 보여 사이드프로젝트나 인디 개발이 아니면 안할만한 것. => 5, 6인 => 진짜 재밌고 괜찮은 것 나옴
+-->
+
+    <!-- 1단계 : (자동 저장 없이) DOM 표현하는 개념 -->
+    <div>
+      <h1>무엇이든 물어보세요❓</h1>
+      <p>
+        이 서비스는 당신의 만능입니다! <br />
+        궁금한 내용을 질문해보세요!<br />
+        예시 : 훌륭한 개발자가 되려면 어떻게 해야 될까요?<br />
+        예시 : 2025년 한국 시리즈 우승 야구팀은 어디일까요?
+      </p>
+      <p>구현 방식이 궁금하시다면 => <a href="howto.html">READ ME</a></p>
+    </div>
+    <header></header>
+    <form id="controller">
+      <label
+        >모델 :
+        <select name="modelOption">
+          <option value="1">gemini</option>
+          <option value="2">deepseek</option>
+          <option value="3">gemini-2.0-flash</option>
+          <option value="4">gemini-2.0-pro-exp-02-05</option>
+          <option value="5">gemini-2.0-flash-thinking-exp-01-21</option>
+        </select>
+      </label>
+      <br />
+      <textarea name="textData" placeholder="질문을 입력하세요"></textarea>
+      <button>질문하기</button>
+    </form>
+    <div id="container"></div>
+    <button id="resetButton">리셋</button>
+
+    <script>
+      function _() {
+        const container = document.querySelector("#container");
+        const form = document.querySelector("#controller");
+        const resetButton = document.querySelector("#resetButton");
+
+        // 한줄로 줄일 수 있다!
+        resetButton.addEventListener("click", () => (data.length = 0));
+
+        const data = new Proxy([], {
+          // proxy 객체, 키, 값 -> 객체에 키를 통해 값을 변환하는 것이 일어나면 일단 그걸 처리함
+          set(target, property, value) {
+            target[property] = value;
+            updateContainer(); // data 배열에 추가/수정시 반응
+            updateStorage(target);
+            return true;
+          },
+        });
+
+        function onMounted() {
+          data.push(...(JSON.parse(localStorage.getItem("myData")) ?? []));
+        }
+        onMounted();
+
+        function updateContainer() {
+          container.innerText = ""; // 배열 일괄 추가, 잃어버리기(초기화)
+          for (const d of data) {
+            const tmp = document.createElement("div"); // temp...
+            tmp.textContent = d.text;
+
+            // 삭제 구현
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "삭제";
+            deleteButton.addEventListener("click", () => {
+              const filtered = data.filter((value) => value.id !== d.id);
+              data.length = 0;
+              data.push(...filtered);
+            });
+            // LLM 응답
+            if (d.reply) {
+              const box = document.createElement("div");
+              const reply = document.createElement("code");
+              box.appendChild(reply);
+              // CSS in JS, Styled Component
+              box.style.padding = "12px";
+              box.style.margin = "4px";
+              box.style.backgroundColor = "beige";
+              box.style.border = "1px solid black";
+              reply.textContent = d.reply;
+              tmp.appendChild(box);
+            }
+            tmp.appendChild(deleteButton);
+            container.appendChild(tmp);
+          }
+        }
+
+        function updateStorage(target) {
+          localStorage.setItem("myData", JSON.stringify(target));
+          console.log(localStorage.getItem("myData"));
+          // "text" 형태로 들어온다
+        }
+
+        async function handleForm(event) {
+          event.preventDefault();
+          const formData = new FormData(form);
+          const text = formData.get("textData");
+          let reply;
+          switch (formData.get("modelOption")) {
+            case "1":
+              reply = `👬 Gemini : ${await makeReply(
+                text,
+                "gemini-1.5-flash"
+              )}`;
+              break;
+            case "2":
+              reply = `👀 DeepSeek : ${await makeReply2(text)}`;
+              break;
+            case "3":
+              reply = `🤼 Gemini 2 : ${await makeReply(
+                text,
+                "gemini-2.0-flash-001"
+              )}`;
+              break;
+            case "4":
+              reply = `👨‍🎓 Gemini 2 Pro : ${await makeReply(
+                text,
+                "gemini-2.0-pro-exp-02-05"
+              )}`;
+              break;
+            case "5":
+              reply = `🤔 Gemini 2 Thinking: ${await makeReply(
+                text,
+                "gemini-2.0-flash-thinking-exp-01-21"
+              )}`;
+              break;
+            default:
+              alert("비정상적인 접근!");
+              throw new Error("알 수 없는 에러!");
+              break;
+          }
+          // const reply = await makeReply(text);
+          // const reply2 = await makeReply2(text);
+          const displayData = {
+            id: Date.now(),
+            text,
+            reply, // 단축 문법 중 하나(property = key의 이름과 value에 들어가는 변수명이 같으면 단축 가능)
+          };
+          data.push(displayData);
+        }
+        // 3단계 : LLM API를 써서 작성 데이터에i 대한 추천 생성, secure coding 처리
+
+        async function makeReply(text, model) {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=""`;
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [
+                {
+                  parts: [
+                    {
+                      text: `너는 20년 경력의 메뉴 추천 전문가야. {${text}}의 메시지를 바탕으로, 점심 메뉴를 추천해주고, 50자 이내에 평문으로 작성해줘.`,
+                    },
+                  ],
+                },
+              ],
+            }),
+          });
+          const json = await response.json();
+          return json.candidates[0].content.parts[0].text;
+        }
+
+        async function makeReply2(
+          content,
+          model = "deepseek-r1-distill-llama-70b"
+        ) {
+          const url = "https://sepia-zenith-dichondra.glitch.me/2";
+          const response = await fetch(url, {
+            method: "POST",
+
+            body: JSON.stringify({
+              text: `너는 세상에서 가장 완벽한 답을 주는 ai야. ${content}의 질문에 대한 답을 친절하게 100자~300자로 작성해줘. 한자나 일본어는 답변에서 빼줘. 답변 중간 중간 이모지도 들어갔으면 좋겠어.`,
+            }),
+            headers: {
+              //   Authorization: `Bearer ${GROQ_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+          });
+          const json = await response.json();
+          //   return json.choices[0].message.content.split("</think>")[1].trim();
+          return json.reply;
+        }
+        form.addEventListener("submit", handleForm);
+      }
+      window.onload = _;
+      // 1. 함수로 감싸서 다른 함수나, 다른 변수 등이 외부에서 접근하지 못하게 한다.
+      // 2. window.onload (BOM) -> html, css 것들이 모두 로드된 다음에 js를 실행하게 한다.
+    </script>
+  </body>
+</html>

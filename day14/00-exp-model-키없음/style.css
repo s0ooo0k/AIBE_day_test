@@ -1,0 +1,176 @@
+/* 폰트 */
+.noto-sans-kr-basic {
+  font-family: "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.roboto-basic {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.archivo-narrow-basic {
+  font-family: "Archivo Narrow", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.kumar-one-regular {
+  font-family: "Kumar One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 전체 페이지 스타일 */
+body {
+  font-family: "Noto Sans KR", serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  margin: 20px 20px;
+  text-align: center;
+}
+
+/* 헤더 스타일 */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.h1 {
+  text-align: center;
+}
+#resetButton {
+  background: #5d7ab9;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+}
+
+#resetButton:hover {
+  background: #87ceeb;
+  transform: scale(1.05);
+}
+
+code {
+  font-family: "Noto Sans KR", serif;
+}
+
+/* 폼 스타일 */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 350px;
+  margin: 20px 0;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+select,
+textarea,
+button {
+  width: auto;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  width: 100%;
+}
+p {
+  text-align: center;
+}
+button {
+  background: #5d7ab9;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 12px 24px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #5d7ab9;
+  transform: scale(1.05);
+}
+
+/* 데이터 컨테이너 스타일 */
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-self: center;
+  font-family: "Noto Sans KR", serif;
+}
+
+/* 데이터 박스 스타일 */
+#container div {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+/* LLM 응답 스타일 */
+#container div code {
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+  color: #333;
+}
+
+/* 삭제 버튼 스타일 */
+#container div button {
+  background: #5d7ab9;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#container div button:hover {
+  background: #87ceeb;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 8px;
+  background: #5d7ab9;
+  color: white;
+  font-weight: bold;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
