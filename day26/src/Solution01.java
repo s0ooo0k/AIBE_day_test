@@ -12,5 +12,6 @@ public class Solution01 {
         System.out.println("hello.equals(newHello)= "+hello.equals(newHello));
 
         // StringBuffer
+        long startTime = System.currentTimeMillis();
     }
 }
