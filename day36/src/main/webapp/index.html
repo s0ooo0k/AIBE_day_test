@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>프롬프트 전송</title>
+    <meta charset="UTF-8"> </head>
+<body>
+<form id="promptForm">
+    <label for="promptInput">프롬프트:</label><br>
+    <textarea id="promptInput" name="prompt" rows="4" cols="50"></textarea><br><br>
+    <button type="button" onclick="sendPrompt()">전송</button>
+</form>
+
+<div id="responseArea"></div>
+
+<script>
+    function sendPrompt() {
+        const prompt = document.getElementById('promptInput').value + " No markdown, Korean Language, 500 character";
+        const responseArea = document.getElementById('responseArea');
+
+        const url = `./gemini?prompt=${encodeURIComponent(prompt)}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                responseArea.innerHTML = `<p>응답: ${data.candidates[0].content.parts[0].text}</p>`; // JSON.stringify를 사용하여 객체를 문자열로 변환
+            })
+            .catch(error => {
+                responseArea.innerHTML = `<p>오류: ${error}</p>`;
+            });
+    }
+</script>
+</body>
+</html>
